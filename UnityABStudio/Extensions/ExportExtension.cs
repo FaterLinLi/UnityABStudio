@@ -1,18 +1,19 @@
-namespace SoarCraft.QYun.UnityABStudio.Helpers {
+namespace SoarCraft.QYun.UnityABStudio.Extensions {
+    using System.IO;
     using AssetReader.Entities.Enums;
     using AssetReader.Unity3D.Objects.Texture2Ds;
     using CommunityToolkit.Mvvm.DependencyInjection;
     using Core.Models;
     using Services;
 
-    public static class ExportHelper {
+    public static class ExportExtension {
         private static string path;
         private static AssetItem asset;
-        private static SettingsService settings = Ioc.Default.GetRequiredService<SettingsService>();
+        private static readonly SettingsService settings = Ioc.Default.GetRequiredService<SettingsService>();
 
         public static bool ExportConvertFile(this AssetItem asset, string path) {
-            ExportHelper.path = path;
-            ExportHelper.asset = asset;
+            ExportExtension.path = path;
+            ExportExtension.asset = asset;
 
             switch (asset.Type) {
                 case ClassIDType.Texture2D:
@@ -37,9 +38,22 @@ namespace SoarCraft.QYun.UnityABStudio.Helpers {
         public static bool ExportTexture2D(this AssetItem asset, string path) {
             var m_Texture2D = (Texture2D)asset.Obj;
             if (settings.ConvertTexture) {
-
+                var type = settings.ConvertType;
+                if (!TryExportFile(path, asset, "." + type.ToString().ToLower(), out var exportFullPath))
+                    return false;
+                var stream = m_Texture2D.ConvertToStream(type, true);
+                if (stream == null)
+                    return false;
+                using (stream) {
+                    File.WriteAllBytes(exportFullPath, stream.ToArray());
+                    return true;
+                }
+            } else {
+                if (!TryExportFile(path, asset, ".tex", out var exportFullPath))
+                    return false;
+                File.WriteAllBytes(exportFullPath, m_Texture2D.image_data.GetData());
+                return true;
             }
-            return false;
         }
     }
 }

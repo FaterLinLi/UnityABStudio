@@ -121,19 +121,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BitCasts.h" />
+    <ClInclude Include="ETC.h" />
+    <ClInclude Include="FP16.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="TextureDecoder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="BCN.h" />
+    <ClCompile Include="Colors.cpp" />
+    <ClCompile Include="DecodeBC4.cpp" />
+    <ClCompile Include="DecodeBC5.cpp" />
+    <ClCompile Include="DecodeBC6.cpp" />
+    <ClCompile Include="DecodeBC7.cpp" />
     <ClCompile Include="DecodeDXT1.cpp" />
+    <ClCompile Include="DecodeDXT5.cpp" />
+    <ClCompile Include="DecodeEACR.cpp" />
+    <ClCompile Include="DecodeEACRG.cpp" />
+    <ClCompile Include="DecodeEACRGSigned.cpp" />
+    <ClCompile Include="DecodeEACRSigned.cpp" />
+    <ClCompile Include="DecodeETC1.cpp" />
+    <ClCompile Include="DecodeETC2.cpp" />
+    <ClCompile Include="DecodeETC2A1.cpp" />
+    <ClCompile Include="DecodeETC2A8.cpp" />
+    <ClCompile Include="DecodePVRTC.cpp" />
+    <ClCompile Include="ETC.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PVRTC.h" />
     <ClCompile Include="TextureDecoder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,11 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AssetReader\AssetReader.csproj">
-      <Project>{5e8af99f-026e-42c5-bdd5-b61c1f067ee4}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,6 +27,15 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ETC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FP16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitCasts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextureDecoder.cpp">
@@ -39,6 +48,60 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DecodeDXT1.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="Colors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeDXT5.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodePVRTC.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="PVRTC.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeETC1.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeETC2.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeETC2A1.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeETC2A8.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="ETC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeEACR.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeEACRSigned.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeEACRG.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeEACRGSigned.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeBC4.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeBC5.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeBC6.cpp">
+      <Filter>Source Files\Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="BCN.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecodeBC7.cpp">
       <Filter>Source Files\Decoders</Filter>
     </ClCompile>
   </ItemGroup>

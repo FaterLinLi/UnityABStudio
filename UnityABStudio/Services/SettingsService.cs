@@ -4,11 +4,10 @@ namespace SoarCraft.QYun.UnityABStudio.Services {
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
     using Contracts.Services;
-    using Core.Entities;
     using Extensions;
     using Microsoft.UI.Xaml;
 
-    public class SettingsService : ObservableRecipient {
+    public partial class SettingsService : ObservableRecipient {
         private readonly IThemeSelectorService themeSelectorService;
         private ElementTheme elementTheme;
 
@@ -26,36 +25,18 @@ namespace SoarCraft.QYun.UnityABStudio.Services {
             set => _ = this.SetProperty(ref this.versionDescription, value);
         }
 
-        private bool convertTexture;
-
-        public bool ConvertTexture {
-            get => this.convertTexture;
-            set => _ = SetProperty(ref this.convertTexture, value);
-        }
-
-        private bool convertAudio;
-
-        public bool ConvertAudio {
-            get => this.convertAudio;
-            set => _ = SetProperty(ref this.convertAudio, value);
-        }
-
-        private ImageFormat convertType;
-
-        public ImageFormat ConvertType {
-            get => this.convertType;
-            set => _ = SetProperty(ref this.convertType, value);
-        }
-
         private ICommand switchThemeCommand;
 
         public ICommand SwitchThemeCommand => this.switchThemeCommand ??= new RelayCommand<ElementTheme>(
-            async (param) => {
+            async param => {
                 if (this.ElementTheme != param) {
                     this.ElementTheme = param;
                     await this.themeSelectorService.SetThemeAsync(param);
                 }
             });
+
+        public SettingsService() {
+        }
 
         public SettingsService(IThemeSelectorService themeSelectorService) {
             this.themeSelectorService = themeSelectorService;

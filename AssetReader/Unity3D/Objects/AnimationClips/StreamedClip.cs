@@ -1,9 +1,9 @@
 namespace SoarCraft.QYun.AssetReader.Unity3D.Objects.AnimationClips {
-    using Utils;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Utils;
 
     public class StreamedClip {
         public uint[] data;
@@ -64,7 +64,7 @@ namespace SoarCraft.QYun.AssetReader.Unity3D.Objects.AnimationClips {
             var frameList = new List<StreamedFrame>();
             var buffer = new byte[data.Length * 4];
             Buffer.BlockCopy(data, 0, buffer, 0, buffer.Length);
-            using (var reader = new UnityReader(new MemoryStream(buffer))) {
+            using (var reader = new UnityReader(new MemoryStream(buffer), false)) {
                 while (reader.BaseStream.Position < reader.BaseStream.Length) {
                     frameList.Add(new StreamedFrame(reader));
                 }

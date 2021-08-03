@@ -32,8 +32,8 @@ namespace SoarCraft.QYun.UnityABStudio.Services {
         }
 
         private async Task<ElementTheme> LoadThemeFromSettingsAsync() {
-            ElementTheme cacheTheme = ElementTheme.Default;
-            string themeName = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SettingsKey);
+            var cacheTheme = ElementTheme.Default;
+            var themeName = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SettingsKey);
 
             if (!string.IsNullOrEmpty(themeName)) {
                 _ = Enum.TryParse(themeName, out cacheTheme);
@@ -42,8 +42,6 @@ namespace SoarCraft.QYun.UnityABStudio.Services {
             return cacheTheme;
         }
 
-        private async Task SaveThemeInSettingsAsync(ElementTheme theme) {
-            await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, theme.ToString());
-        }
+        private async Task SaveThemeInSettingsAsync(ElementTheme theme) => await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, theme.ToString());
     }
 }

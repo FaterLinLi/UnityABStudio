@@ -5,6 +5,7 @@ namespace SoarCraft.QYun.AssetReader {
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Threading.Tasks;
     using Entities.Enums;
     using Unity3D;
     using Unity3D.Objects;
@@ -16,13 +17,12 @@ namespace SoarCraft.QYun.AssetReader {
     using Unity3D.Objects.Materials;
     using Unity3D.Objects.Meshes;
     using Unity3D.Objects.Shaders;
-    using Unity3D.Objects.Sprites;
     using Unity3D.Objects.SpriteAtlases;
+    using Unity3D.Objects.Sprites;
     using Unity3D.Objects.Texture2Ds;
     using Unity3D.Objects.VideoClips;
     using Utils;
     using static Helpers.ImportHelper;
-    using System.Threading.Tasks;
 
     public class AssetsManager {
         public string SpecifyUnityVersion;
@@ -56,8 +56,8 @@ namespace SoarCraft.QYun.AssetReader {
             }
 
             //use a for loop because list size can change
-            foreach (var file in this.importFiles) {
-                this.LoadFile(file);
+            for (var i = 0; i < this.importFiles.Count; i++) {
+                this.LoadFile(this.importFiles[i]);
             }
 
             importFiles.Clear();
@@ -203,15 +203,16 @@ namespace SoarCraft.QYun.AssetReader {
         public void Clear() {
             foreach (var assetsFile in AssetsFileList) {
                 assetsFile.Objects.Clear();
-                assetsFile.reader.Close();
+                assetsFile.ObjectsDic.Clear();
+                assetsFile.reader.Dispose();
             }
             AssetsFileList.Clear();
 
             foreach (var resourceFileReader in resourceFileReaders) {
-                resourceFileReader.Value.Close();
+                resourceFileReader.Value.Dispose();
             }
-            resourceFileReaders.Clear();
 
+            resourceFileReaders.Clear();
             assetsFileIndexCache.Clear();
         }
 
